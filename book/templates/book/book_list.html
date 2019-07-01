@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
 
-{% black title %}Book List{% endblock %}
-{% for book in books %}
-{{book.title}}
-{% endfor %}
-{% black content %}
+{% block title %}Home - Book List{% endblock %}
 
+{% block content %}
+<div class="row ">
+    {% for book in books %}
+    <div class="col-md-3">
+        <div class="card">
+            <a href="book/{{book.slug}}">
+                <img src="/media/{{book.thumbnail}}" class="img-thumbnail" alt="{{book.slug}}">
+                <h5 class="text-center text-primary bg-info">{{book.title}}</h5>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

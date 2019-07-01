@@ -1,0 +1,9 @@
+.flex{
+    display:flex;
+}
+.flex-direction-column{
+    flex-direction:column;
+}
+img.img-rounded.custom-thumbnail {
+    max-height: 70vh;
+}
