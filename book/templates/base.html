@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     {% load static %}
+    <link rel="icon" href="{% static 'images/favicon.png'%}">
     <link rel="stylesheet" href="{% static 'book/css/style.css' %}">
     <title>{% block title %}{% endblock%}</title>
 </head>
@@ -21,8 +22,13 @@
               <li class="active"><a href="/">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                {% if request.user.is_authenticated %}
+                   <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> you are loged in as {{request.user.username}}</a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                {% else %}
+                <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                {% endif %}
             </ul>
           </div>
         </nav>
