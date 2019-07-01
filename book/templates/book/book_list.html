@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% black title %}Book List{% endblock %}
+{% for book in books %}
+{{book.title}}
+{% endfor %}
+{% black content %}
+
+{% endblock %}
