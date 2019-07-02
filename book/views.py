@@ -12,6 +12,14 @@ def dashboard(request):
 class BookListView(ListView):
     model = Book
     template_name = 'book/book_list.html'
+    def collect(self,category):
+        Queryset=Book.objects.none()
+        while(category.has_children()):
+            for category in category.children.all() :
+                Queryset=Queryset.union(self.collect(category))
+
+        Queryset=Queryset.union(Book.objects.filter(category=category))
+        return Queryset
     def get_context_data(self,**kwargs):
         context =super().get_context_data(**kwargs)
         #get only those who has no parent
@@ -19,7 +27,8 @@ class BookListView(ListView):
         mycontex=Book.objects
         try:
             if(self.kwargs['slug']):
-                mycontex=mycontex.filter(category=Category.objects.filter(slug=self.kwargs['slug']).get())
+                cat=Category.objects.filter(slug=self.kwargs['slug']).get()
+                mycontex=self.collect(category=cat)
         except:
             pass
         context['books']=mycontex.all()

@@ -12,7 +12,6 @@ class Category(models.Model):
         return self.children.exists()
     def has_parent(self):
         return True if self.parent else False
-
 class Book(models.Model):
     title = models.CharField(max_length=250)
     author = models.CharField(max_length=250)
@@ -22,5 +21,6 @@ class Book(models.Model):
     slug = models.SlugField(unique=True)
     published = models.DateTimeField()
     category = models.ForeignKey(Category,related_name='books',on_delete=models.CASCADE)
+    objects=models.Manager()
     def __str__(self):
         return  self.title
