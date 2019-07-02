@@ -3,16 +3,54 @@
 {% block title %}Home - Book List{% endblock %}
 
 {% block content %}
+{% load book_extras %}
 <div class="row ">
-    {% for book in books %}
-    <div class="col-md-3">
-        <div class="card">
-            <a href="book/{{book.slug}}">
-                <img src="/media/{{book.thumbnail}}" class="img-thumbnail" alt="{{book.slug}}">
-                <h5 class="text-center text-primary bg-info">{{book.title}}</h5>
-            </a>
+    <div class="col-md-2">
+        <ul class="nav flex-column"><!-- level 1 -->
+            <li class='nav-item'>
+                <a class="nav-link {% if request.path == '/' %} active {% endif %}" href="/">All</a>
+            </li>
+            {% for category in categorys %}
+            <li class='nav-item'>
+                <a class="nav-link {% if request.path|urlequate:category.slug %} active {% endif %}" href="/{{category.slug}}">{{category.name}}</a>
+                {% if category.has_children %}
+                    <ul> <!-- level 2 -->
+                        {% for category in category.children.all %}
+                        <li><a class="nav-link" href="/{{category.slug}}">{{category.name}}</a>
+                            {% if category.has_children %}
+                            <!-- #---------cut-------# -->
+                                <ul> <!-- level 3 -->
+                                    {% for category in category.children.all %}
+                                    <li><a class="nav-link" href="/{{category.slug}}">{{category.name}}</a>
+                                        {% if category.has_children %}
+                                           <!-- #----paste--------# -->
+                                        {% endif %}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            <!-- #--------------------# -->
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            {% for book in books %}
+            <div class="col-md-3">
+                <div class="card">
+                    <a href="book/{{book.slug}}">
+                        <img src="/media/{{book.thumbnail}}" class="img-thumbnail" alt="{{book.slug}}">
+                        <h5 class="text-center text-primary bg-info">{{book.title}}</h5>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
 </div>
 {% endblock %}

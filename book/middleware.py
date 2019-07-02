@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 class RestrictIfsignup(object):
-    restrict_before_authentication =['/book/']
+    restrict_before_authentication =[]
     restrict_after_authentication =['/signup/']
     def __init__(self, get_response):
         self.get_response = get_response

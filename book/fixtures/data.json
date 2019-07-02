@@ -1,0 +1,99 @@
+[
+{
+  "model": "book.book",
+  "fields": {
+    "title": "The Wings Of Fire",
+    "author": "A.P.J Abdul Kalam",
+    "edition": "1.0",
+    "thumbnail": "images/thewingsoffire_Ij3IX9J.jpg",
+    "kindle": "files/Wings_of_fire__PDFDrive.com__Bikxrdq.pdf",
+    "slug": "wings-fire",
+    "published": "2019-07-01T11:39:40Z",
+    "category": 1
+  }
+},
+{
+  "model": "book.book",
+  "fields": {
+    "title": "Learn Django",
+    "author": "unknown",
+    "edition": "1.0",
+    "thumbnail": "images/VdPbE3eiEjI.jpg",
+    "kindle": "files/LPTHW.pdf",
+    "slug": "learn-django-unknown",
+    "published": "2019-07-01T12:17:03Z",
+    "category": 4
+  }
+},
+{
+  "model": "book.category",
+  "fields": {
+    "name": "Authobiography",
+    "description": "Authobiography",
+    "parent": null,
+    "slug": "authobiography"
+  }
+},
+{
+  "model": "book.category",
+  "fields": {
+    "name": "Biography",
+    "description": "Biography",
+    "parent": null,
+    "slug": "biography"
+  }
+},
+{
+  "model": "book.category",
+  "fields": {
+    "name": "Poetry",
+    "description": "Poetry",
+    "parent": null,
+    "slug": "poetry"
+  }
+},
+{
+  "model": "book.category",
+  "fields": {
+    "name": "Litrature",
+    "description": "Litrature",
+    "parent": null,
+    "slug": "litrature"
+  }
+},
+{
+  "model": "book.category",
+  "fields": {
+    "name": "Academic",
+    "description": "Academic",
+    "parent": null,
+    "slug": "academic"
+  }
+},
+{
+  "model": "book.category",
+  "fields": {
+    "name": "N.C.E.R.T",
+    "description": "N.C.E.R.T",
+    "parent": 5,
+    "slug": "ncert"
+  }
+},
+{
+  "model": "book.category",
+  "fields": {
+    "name": "Comptetive Exams",
+    "description": "Comptetive Exams",
+    "parent": 5,
+    "slug": "comptetive_exams"
+  }
+},
+{
+  "model": "book.category",
+  "fields": {
+    "name": "Reasoning",
+    "description": "Reasoning",
+    "parent": 7,
+    "slug": "reasoning"
+  }
+}]

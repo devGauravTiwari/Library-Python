@@ -11,3 +11,6 @@ body{
     background-image: linear-gradient(to right, #222222 , #171515d1 , #222222, #222222 , #171515d1 , #222222);
     color:#ece4e4;
 }
+a.active {
+    background-color: #eee;
+}
