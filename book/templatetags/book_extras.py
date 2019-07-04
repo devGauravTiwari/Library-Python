@@ -6,6 +6,6 @@ register=template.Library()
 def replaceleadingslash(value):
     return value.replace('/', '',1)
 @register.filter(name='urlequate')
-def urlequate(value,args):
-    value=value.replace('/','',1)
-    return value==args
+def urlequate(value,arg1):
+    value=value.split('/').pop()
+    return value==arg1

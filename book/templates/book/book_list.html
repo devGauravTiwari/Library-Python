@@ -8,20 +8,20 @@
     <div class="col-md-2">
         <ul class="nav flex-column"><!-- level 1 -->
             <li class='nav-item'>
-                <a class="nav-link {% if request.path == '/' %} active {% endif %}" href="/">All</a>
+                <a class="nav-link {% if request.path == 'books' %} active {% endif %}" href="/books">All</a>
             </li>
             {% for category in categorys %}
             <li class='nav-item'>
-                <a class="nav-link {% if request.path|urlequate:category.slug %} active {% endif %}" href="/{{category.slug}}">{{category.name}}</a>
+                <a class="nav-link {% if request.path|urlequate:category.slug %} active {% endif %}" href="/books/{{category.slug}}">{{category.name}}</a>
                 {% if category.has_children %}
                     <ul> <!-- level 2 -->
                         {% for category in category.children.all %}
-                        <li><a class="nav-link" href="/{{category.slug}}">{{category.name}}</a>
+                        <li><a class="nav-link" href="/books/{{category.slug}}">{{category.name}}</a>
                             {% if category.has_children %}
                             <!-- #---------cut-------# -->
                                 <ul> <!-- level 3 -->
                                     {% for category in category.children.all %}
-                                    <li><a class="nav-link" href="/{{category.slug}}">{{category.name}}</a>
+                                    <li><a class="nav-link" href="/books/{{category.slug}}">{{category.name}}</a>
                                         {% if category.has_children %}
                                            <!-- #----paste--------# -->
                                         {% endif %}

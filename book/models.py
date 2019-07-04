@@ -19,6 +19,7 @@ class Book(models.Model):
     thumbnail = models.ImageField(upload_to='images')
     kindle = models.FileField(upload_to='files')
     slug = models.SlugField(unique=True)
+    language = models.CharField(max_length=250,default="English")
     published = models.DateTimeField()
     category = models.ForeignKey(Category,related_name='books',on_delete=models.CASCADE)
     objects=models.Manager()

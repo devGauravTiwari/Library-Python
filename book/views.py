@@ -32,6 +32,7 @@ class BookListView(ListView):
         except:
             pass
         context['books']=mycontex.all()
+        context['rolls']=[i for i in range(190000000,190149721)]
         return context
 
 class BookDetailView(DetailView):
