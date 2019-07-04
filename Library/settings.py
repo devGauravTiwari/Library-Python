@@ -131,3 +131,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'book/media/')
 LOGIN_REDIRECT_URL = '/books'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authtoken',
+    )
+}

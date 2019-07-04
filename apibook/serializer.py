@@ -18,14 +18,9 @@ class CategorySerializer(serializers.HyperlinkedModelSerializer):
         lookup_field='slug',
         view_name='category-detail'
     )
-    snippets =serializers.HyperlinkedRelatedField(
-        many=True,
-        view_name='book-detail',
-        read_only=True
-    )
     class Meta:
         model = Category
-        fields = ('snippets','url','name','description','parent')
+        fields = ('url','name','description','parent')
         extra_kwargs = {
             'parent': {'lookup_field': 'slug'}
         }
