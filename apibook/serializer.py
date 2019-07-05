@@ -24,3 +24,11 @@ class CategorySerializer(serializers.HyperlinkedModelSerializer):
         extra_kwargs = {
             'parent': {'lookup_field': 'slug'}
         }
+class CategorySerializerCreate(serializers.ModelSerializer):
+    class Meta:
+        model=Category
+class BookSerializerCreate(serializers.ModelSerializer):
+    class Meta:
+        model=Book
+        fields='__all__'
+

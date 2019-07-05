@@ -1,6 +1,6 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, UpdateAPIView, DestroyAPIView
 from book.models import Book, Category
-from .serializer import BookSerializer,CategorySerializer
+from .serializer import *
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
@@ -10,35 +10,6 @@ class BookApiViewAll(ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     lookup_field = 'slug'
-
-class BookApiView(RetrieveAPIView):
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-    lookup_field = 'slug'
-
-class BookCreateApiView(CreateAPIView):
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-    lookup_field = 'slug'
-
-class BookUpdateApiView(UpdateAPIView):
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-    lookup_field = 'slug'
-
-class BookDestroyApiView(DestroyAPIView):
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-    lookup_field = 'slug'
-
 class CategoryApiViewAll(ListAPIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
@@ -46,6 +17,14 @@ class CategoryApiViewAll(ListAPIView):
     serializer_class = CategorySerializer
     lookup_field = 'slug'
 
+
+
+class BookApiView(RetrieveAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    lookup_field = 'slug'
 class CategoryApiView(RetrieveAPIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
@@ -53,20 +32,44 @@ class CategoryApiView(RetrieveAPIView):
     serializer_class = CategorySerializer
     lookup_field = 'slug'
 
-class CategoryCreateApiView(CreateAPIView):
+
+
+
+class BookCreateApiView(ListCreateAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    serializer_class = BookSerializerCreate
+    lookup_field = 'slug'
+class CategoryCreateApiView(ListCreateAPIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
     queryset = Category.objects.all()
-    lookup_field = 'slug'
-    serializer_class = CategorySerializer
+    serializer_class = CategorySerializerCreate
 
+
+
+
+class BookUpdateApiView(UpdateAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    queryset = Book.objects.all()
+    serializer_class = BookSerializerCreate
+    lookup_field = 'slug'
 class CategoryUpdateApiView(UpdateAPIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
     queryset = Category.objects.all()
     lookup_field = 'slug'
-    serializer_class = CategorySerializer
+    serializer_class = CategorySerializerCreate
 
+
+
+class BookDestroyApiView(DestroyAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    lookup_field = 'slug'
 class CategoryDestroyApiView(DestroyAPIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
